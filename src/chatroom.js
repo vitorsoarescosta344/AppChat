@@ -22,8 +22,15 @@ export default function ChatRoom({route, navigation}) {
     const {data} = await api.post('/getmessages', {
       idDaConversa: route.params.idDaConversa,
     });
+    let arr = [];
 
-    setMessages(data.messages);
+    for (let index = 0; index < data.messages.length; index++) {
+      const element = data.messages[index].messages;
+      console.log(element);
+      arr.push(element);
+    }
+
+    setMessages(arr);
   };
 
   useEffect(() => {
@@ -39,8 +46,15 @@ export default function ChatRoom({route, navigation}) {
   }, []);
 
   socket.on('mensagemNova', mensagemNova => {
-    console.log(mensagemNova.messages);
-    setMessages(mensagemNova.messages);
+    let arr = [];
+
+    for (let index = 0; index < mensagemNova.length; index++) {
+      const element = mensagemNova[index].messages;
+      console.log(element);
+      arr.push(element);
+    }
+
+    setMessages(arr);
   });
 
   return (

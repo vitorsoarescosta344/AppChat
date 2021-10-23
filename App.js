@@ -52,7 +52,7 @@ export default function App() {
           initialRouteName={userToken !== null ? 'Conversas' : 'Login'}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Cadastro" component={Cadastro} />
-          <Stack.Screen name="Conversas" component={ChatList} />
+          <Stack.Screen name="Conversas" component={ChatList} options={{}} />
           <Stack.Screen name="Sala" component={ChatRoom} />
         </Stack.Navigator>
       </NavigationContainer>

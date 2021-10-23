@@ -33,6 +33,11 @@ export default function ChatList({navigation}) {
 
     setFoto(data.foto);
   };
+    
+    const logout = async () => {
+        await AsyncStorage.removeItem("token")
+        navigation.navigate('Login')
+    }
 
   useEffect(() => {
     getConversas();
@@ -93,6 +98,8 @@ export default function ChatList({navigation}) {
           ItemSeparatorComponent={itemSeparator}
         />
         <FAB style={styles.fab} onPress={toggleOverlay} />
+        <FAB style={styles.fab2} onPress={logout} />
+
         <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
           <View style={{width: 350, height: '70%', justifyContent: 'center'}}>
             <View style={styles.inputWrapper}>
@@ -128,6 +135,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     margin: 30,
     right: 0,
+    bottom: 0,
+    backgroundColor: '#2196f3',
+  },
+  fab2: {
+    position: 'absolute',
+    margin: 30,
+    left: 0,
     bottom: 0,
     backgroundColor: '#2196f3',
   },
